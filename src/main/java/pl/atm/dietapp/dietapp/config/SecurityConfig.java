@@ -24,17 +24,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/", "/homepage").permitAll()
+                .antMatchers("/register", "/", "/index").permitAll()
                 .antMatchers("/users").hasRole("ADMIN") //TODO dodać funkcjonalność zarządzania userami przez administratora
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/products")
+                .defaultSuccessUrl("/caloriescalc")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/homepage");
+                .logoutSuccessUrl("/index");
 
     }
 

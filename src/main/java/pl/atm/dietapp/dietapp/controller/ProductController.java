@@ -10,11 +10,12 @@ import pl.atm.dietapp.dietapp.dto.UserDto;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/products")
 public class ProductController {
 
-    @RequestMapping("products")
+    @RequestMapping
     public String products() {
-        return "products";
+        return "/products/products";
     }
 
 }
