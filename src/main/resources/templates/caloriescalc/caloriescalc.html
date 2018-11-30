@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" >
+    <meta charset="UTF-8">
+    <title th:text="#{caloriescalc.page.title}">Page Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="small text-right">
+        <a th:href="@{caloriescalc(lang=pl_PL)}" th:text="#{language.polish}"></a> |
+        <a th:href="@{caloriescalc(lang=en_GB)}" th:text="#{language.english}"></a> |
+        <a th:href="@{caloriescalc(lang=de_DE)}" th:text="#{language.german}"></a>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><h1 align="center" th:text="#{caloriecalculator}">Calorie Calculator</h1></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">produkty</div>
+        <div class="col-md-2">gramy</div>
+        <div class="col-md-1">tłuszcz</div>
+        <div class="col-md-1">białka</div>
+        <div class="col-md-2">weglowodany</div>
+        <div class="col-md-2">kalorie</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-2 dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Produkty<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" >
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+                <li><a href="#">jQuery</a></li>
+                <li><a href="#">Bootstrap</a></li>
+                <li><a href="#">Angular</a></li>
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <input type="number" class="form-control" id="grams" placeholder="0">
+        </div>
+        <div class="col-md-1">
+            <div class="d-inline p-2 bg-primary text-white">prot</div>
+        </div>
+        <div class="col-md-1">
+            <div class="d-inline p-2 bg-primary text-white">fat</div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-inline p-2 bg-primary text-white">carbs</div>
+        </div>
+        <div class="col-md-2">
+            <div class="d-inline p-2 bg-dark text-white">kcal</div>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-outline-primary btn-sm"/>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".dropdown-menu li").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
