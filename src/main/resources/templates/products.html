@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>products</title>
@@ -7,6 +7,12 @@
 <body>
 
 <h1> product </h1>
+
+<a th:href="@{/login}">Zaloguj się</a>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" name="submit" value="Wyloguj">
+</form>
 
 </body>
 </html>

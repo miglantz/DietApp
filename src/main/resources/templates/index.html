@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" >
+    <meta charset="UTF-8">
+    <title th:text="#{caloriescalc.page.title}">Page Title</title>
+    <title th:text="#{index.page.title}">Page Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="small text-right">
+        <a th:href="@{index(lang=pl_PL)}" th:text="#{language.polish}"></a> |
+        <a th:href="@{index(lang=en_GB)}" th:text="#{language.english}"></a> |
+        <a th:href="@{index(lang=de_DE)}" th:text="#{language.german}"></a>
+    </div>
+    <div class="row">
+        <div class="col-md-3"><h1>ATM</h1></div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+            <a th:href="@{/login}">
+                <button type="button" class="btn btn-primary" th:text="#{login}">ZALOGUJ</button>
+            </a>
+            <a th:href="@{/register}">
+            <button type="button" class="btn btn-primary" th:text="#{signin}">ZAREJESTRUJ</button>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="https://dingo.care2.com/pictures/greenliving/1235/1234853.large.jpg"
+                 class="rounded mx-auto d-block" alt="pankackes"
+                 th:src="@{/images/welcome.jpg}"/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <h3 align="center" th:text="#{caloriecalculator}">Kalkulator kalori</h3>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>
