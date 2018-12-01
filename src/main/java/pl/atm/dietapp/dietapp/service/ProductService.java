@@ -5,6 +5,9 @@ import pl.atm.dietapp.dietapp.dto.ProductDto;
 import pl.atm.dietapp.dietapp.entity.Product;
 import pl.atm.dietapp.dietapp.repository.ProductRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductService {
 
@@ -17,6 +20,12 @@ public class ProductService {
     public void create(ProductDto productDto) {
         Product product = mapTo(productDto);
         productRepository.save(product);
+    }
+
+
+    public List<ProductDto> findAll() {
+        List<Product> products = productRepository.findAll();
+        return products.stream().map(this::mapTo).collect(Collectors.toList());
     }
 
     private ProductDto mapTo(Product product) {
