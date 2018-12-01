@@ -9,19 +9,27 @@ import pl.atm.dietapp.dietapp.dto.UserDto;
 import pl.atm.dietapp.dietapp.entity.User;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class LoginController {
 
     @RequestMapping("login")
-    public String loginForm() {
+    public String loginForm(Principal principal) {
+        if(principal != null){
+            return "redirect:/index";
+        }
+
         return "login";
     }
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Valid UserDto user, BindingResult errors){
-
-        return "redirect:products";
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String login(Principal principal){
+//
+//        if(principal == null){
+//            return "/index";
+//        }
+//        return "caloriescalc";
+//    }
 }

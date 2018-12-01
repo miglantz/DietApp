@@ -12,6 +12,7 @@ import pl.atm.dietapp.dietapp.exception.RegistrationException;
 import pl.atm.dietapp.dietapp.service.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class RegistrationController {
@@ -23,8 +24,11 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String getRegistrationForm(Model model){
+    public String getRegistrationForm(Model model, Principal principal){
         model.addAttribute("user", new UserDto());
+        if(principal != null){
+            return "redirect:/index";
+        }
 
         return "register";
     }

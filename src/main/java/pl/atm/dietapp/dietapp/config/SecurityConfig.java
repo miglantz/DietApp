@@ -24,17 +24,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/", "/index").permitAll()
-                .antMatchers("/users").hasRole("ADMIN") //TODO dodać funkcjonalność zarządzania userami przez administratora
-                .anyRequest().authenticated()
+                    .antMatchers("/login", "/register").permitAll()
+                    .antMatchers("/", "/index").permitAll()
+                //.antMatchers("/users").hasRole("ADMIN") //TODO dodać funkcjonalność zarządzania userami przez administratora
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/caloriescalc")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                     .defaultSuccessUrl("/caloriescalc", true)
+
+
                 .and()
-                .logout()
-                .logoutSuccessUrl("/index");
+                    .logout()
+                    .logoutSuccessUrl("/index");
 
     }
 
