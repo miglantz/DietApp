@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin()
                     .loginPage("/login")
-                     .defaultSuccessUrl("/caloriescalc", true)
+                    .defaultSuccessUrl("/caloriescalc", true)
 
 
                 .and()
