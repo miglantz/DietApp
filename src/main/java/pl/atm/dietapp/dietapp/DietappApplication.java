@@ -27,6 +27,7 @@ public class DietappApplication {
         SpringApplication.run(DietappApplication.class, args);
     }
 
+    /*
     @Bean
     public CommandLineRunner demo(ProductRepository productRepository) {
 
@@ -74,4 +75,6 @@ public class DietappApplication {
             }
         };
     }
+     */
+
 }
