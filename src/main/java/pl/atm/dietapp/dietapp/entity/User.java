@@ -3,6 +3,7 @@ package pl.atm.dietapp.dietapp.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,6 +15,9 @@ public class User {
     private Long id;
     private String username;
     private String password;
-    private String passwordConfirm;
-    private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<UserRole> roles;
+
+
 }

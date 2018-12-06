@@ -6,6 +6,7 @@ import pl.atm.dietapp.dietapp.entity.Product;
 import pl.atm.dietapp.dietapp.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,10 +23,17 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    public Optional<Product> findByID(Long id){
+        return productRepository.findById(id);
+    }
 
     public List<ProductDto> findAll() {
         List<Product> products = productRepository.findAll();
         return products.stream().map(this::mapTo).collect(Collectors.toList());
+    }
+
+    public void delete(Long id){
+        productRepository.deleteById(id);
     }
 
     private ProductDto mapTo(Product product) {

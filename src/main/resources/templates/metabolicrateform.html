@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" >
+    <meta charset="UTF-8">
+    <title>calculator</title>
+</head>
+<body>
+<br>
+<p>Oblicz swoje dzienne zapotrzebowanie kaloryczne:</p>
+
+<form action = "#" th:action="@{/calculator}" th:object="${metabolicRate}" method="post" class="form-inline">
+
+
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="gender" placeholder="podaj płeć" th:field="*{gender}">
+    <!--<select class="custom-select my-1 mr-sm-2" id="genderOpt">-->
+        <!--<option selected>Wybierz płeć:</option>-->
+        <!--<option th:field="*{gender}" th:value="10" >Kobieta</option>-->
+        <!--<option th:field="*{gender}" th:value="20">Mężczyzna</option>-->
+    <!--</select>-->
+
+    <p>Podaj wagę:</p>
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="weight" placeholder="podaj wagę" th:field="*{weight}">
+
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="height" placeholder="podaj wzrost" th:field="*{height}">
+
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="age" placeholder="podaj wiek" th:field="*{age}">
+
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="activity" placeholder="jaka aktywność?" th:field="*{activity}">
+
+    <input type="text" class="form-control mb-2 mr-sm-2"
+           id="aim" placeholder="co chcesz osiągnąć" th:field="*{aim}">
+
+
+    <button type="submit" class="btn btn-primary mb-2">Oblicz</button>
+</form>
+
+<p th:text="${metabolicRate.calculateMetabolicRate()}"/>
+<!--<p th:text="${metabolicRate.setAim(Aim.GAIN).getAim().getKcal()}" />-->
+
+
+<!--<form action="#" th:action="@{/calculator}" th:object="${metabolicRate}" method="post">-->
+    <!--<p>height: <input type="text" th:field="*{height}" /></p>-->
+    <!--<p>weight: <input type="text" th:field="*{weight}" /></p>-->
+    <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
+<!--</form>-->
+<!--<p th:text="${metabolicRate.multiply()+5}"/>-->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

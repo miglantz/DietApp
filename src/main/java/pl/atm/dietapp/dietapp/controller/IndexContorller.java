@@ -9,6 +9,6 @@ public class IndexContorller {
 
     @RequestMapping
     public String index(){
-        return"index";
+        return "index";
     }
 }

@@ -13,6 +13,12 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductRestController {
 
+    @RequestMapping
+    public String products() {
+        return "products";
+    }
+
+
     @Autowired
     private ProductService productService;
 
