@@ -9,6 +9,7 @@
     <title th:text="#{index.page.title}">Page Title</title>
 </head>
 <body>
+
 <div class="container">
     <div class="small text-right">
         <a th:href="@{index(lang=pl_PL)}" th:text="#{language.polish}"></a> |
@@ -20,15 +21,23 @@
         <div class="col-md-6"></div>
         <div class="col-md-3">
 
-            <a th:href="@{/login}">
+
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
                 <button type="button" class="btn btn-primary" th:text="#{login}">ZALOGUJ</button>
             </a>
-            <a th:href="@{/register}">
-            <button type="button" class="btn btn-primary" th:text="#{signin}">ZAREJESTRUJ</button>
+            <a th:href="@{/register}" sec:authorize="!isAuthenticated()">
+                <button type="button" class="btn btn-primary" th:text="#{signin}">ZAREJESTRUJ</button>
             </a>
+            <div sec:authorize="isAuthenticated()" sec:authentication="name">
+            </div>
+            <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Wyloguj">
+                </form>
+
+
         </div>
-    </div>
-    <div class="row">
+
+
         <div class="col-md-12">
             <img src="https://dingo.care2.com/pictures/greenliving/1235/1234853.large.jpg"
                  class="rounded mx-auto d-block" alt="pankackes"

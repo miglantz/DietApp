@@ -8,15 +8,17 @@
     <title th:text="#{products.page.title}">Page Title</title>
 </head>
 <body>
-<div class="small text-right">
-    <a th:href="@{products(lang=pl_PL)}" th:text="#{language.polish}"></a> |
-    <a th:href="@{products(lang=en_GB)}" th:text="#{language.english}"></a> |
-    <a th:href="@{products(lang=de_DE)}" th:text="#{language.german}"></a>
-</div>
 
-
-
-
+<th:block th:each="user : ${users}">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span th:text="${user.username}"></span>
+        <span class="close">
+            <a th:href="@{/users(deleteId=${user.id})}">
+                <span aria-hidden="true">Usuń</span>
+            </a>
+        </span>
+    </li>
+</th:block>
 
 
 </body>
