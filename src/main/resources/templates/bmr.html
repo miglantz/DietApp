@@ -11,34 +11,34 @@
     <a th:href="@{bmr(lang=de_DE)}" th:text="#{language.german}"></a>
 </div>
 
-<form method="get">
+<form method="post" th:action="@{/bmr}" th:object="${metabolicRate}">
     <div class="container align-items-center">
         <div class="row">
             <div class="form-group col-md-2">
-                <input type="radio" name="gender" value="MALE" checked th:text="#{male}"> <br>
-                <input type="radio" name="gender" value="FEMALE" th:text="#{female}"> <br>
+                <input type="radio" name="gender" value="MALE" checked th:text="#{male}" th:field="*{gender}"> <br>
+                <input type="radio" name="gender" value="FEMALE" th:text="#{female}" th:field="*{gender}"> <br>
             </div>
             <div class="col-md-3"></div>
             <div class="form-group col-md-2">
                 <label for="weight" th:text="#{bmr.weight}">Weight</label>
-                <input type="number" class="form-control" id="weight" name="weight">
+                <input type="number" class="form-control" id="weight" name="weight" th:field="*{weight}">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
                 <label for="height" th:text="#{bmr.height}">Height</label>
-                <input type="number" class="form-control" id="height" name="height">
+                <input type="number" class="form-control" id="height" name="height" th:field="*{height}">
             </div>
             <div class="col-md-3"></div>
             <div class="form-group col-md-2">
                 <label for="age" th:text="#{bmr.age}">Age</label>
-                <input type="number" class="form-control" id="age" name="age">
+                <input type="number" class="form-control" id="age" name="age" th:field="*{age}">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-2">
                 <label th:text="#{bmr.physical.activity}">Activity</label>
-                <select class="form-control" name="activity">
+                <select class="form-control" name="activity" th:field="*{activity}">
                     <option value="NO_ACTIVITY" th:text="#{bmr.no_activty}"></option>
                     <option value="LOW_ACTIVITY" th:text="#{bmr.low_activity}"></option>
                     <option value="MID_ACTIVITY" th:text="#{bmr.medium.activity}"></option>
@@ -49,7 +49,7 @@
             <div class="col-md-3"></div>
             <div class="form-group col-md-2">
                 <label th:text="#{bmr.aim}">Aim</label>
-                <select class="form-control" name="aim">
+                <select class="form-control" name="aim" th:field="*{aim}">
                     <option value="LOSE" th:text="#{bmr.aim.lose}"></option>
                     <option value="GAIN" th:text="#{bmr.aim.gain}"></option>
                     <option value="KEEP" th:text="#{bmr.aim.keep}"></option>
@@ -67,11 +67,11 @@
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="bmr" th:text="#{bmr.daily}">BMR</label>
-                <input type="text" class="form-control" id="bmr" name="bmr" readonly>
+                <input type="text" class="form-control" id="bmr" name="bmr" th:value="${metabolicRate.calculateMetabolicRate()}" readonly>
             </div>
         </div>
         <div class="row">
-            <button type="submit" class="btn btn-primary" th:text="#{save.button}">Save</button>
+            <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-primary" th:text="#{save.button}">Save</button>
         </div>
     </div>
 </form>

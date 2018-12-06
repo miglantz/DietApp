@@ -19,36 +19,31 @@ public class ProductController {
 
     ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-    @GetMapping
-    public String products(Model model, ProductDto productDto) {
-
-        List<ProductDto> products = productService.findAll();
-        if(productDto.getId()!=null) {
-            Optional<Product> chosenProductOpt = productService.findByID(productDto.getId());
-            Product chosenProduct = chosenProductOpt.get();
-            model.addAttribute("chosenProduct", chosenProduct);
-        }
-        model.addAttribute("products", products);
-        model.addAttribute("product", new ProductDto());
-        return "products";
+    @RequestMapping
+    public String products() {
+        return "productForm";
     }
 
-
-//    @RequestMapping(value = { "/products" }, method = RequestMethod.GET)
-//    public String list(Model model, ProductDto productDto){
-//
-//        model.addAttribute("chosenProduct", productDto);
-//        System.out.println(productDto);
+    @PostMapping
+    public String create(@Valid @ModelAttribute("product") ProductDto product) {
+        productService.create(product);
+        return "productForm";
+    }
+//    usuwa produkty z bazy danych
+//    @GetMapping
+//    public String products(Model model, ProductDto productDto) {
 //
 //        List<ProductDto> products = productService.findAll();
+//        if(productDto.getId()!=null) {
+//            Optional<Product> chosenProductOpt = productService.findByID(productDto.getId());
+//            Product chosenProduct = chosenProductOpt.get();
+//            model.addAttribute("chosenProduct", chosenProduct);
+//        }
 //        model.addAttribute("products", products);
 //        model.addAttribute("product", new ProductDto());
-//
-//        return "redirect:products";
-//
+//        return "products";
 //    }
 
+
 }
+

@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login", "/register").permitAll()
+                    .antMatchers("/login", "/register", "/bmr").permitAll()
                     .antMatchers("/", "/index").permitAll()
                 //.antMatchers("/users").hasRole("ADMIN") //TODO dodać funkcjonalność zarządzania userami przez administratora
                     .anyRequest().authenticated()

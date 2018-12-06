@@ -20,11 +20,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{index}" th:text="#{home.page}">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" th:href="@{caloriescalc}" th:text="#{caloriecalculator}">Calories calc</a>
-            <a class="nav-item nav-link" th:href="@{products}" th:text="#{products}">Products</a>
-            <a class="nav-item nav-link" th:href="@{bmr}">BMR</a>
-            <a class="nav-item nav-link" th:href="@{user}" th:text="#{user.page.title}">User Panel</a>
+            <a class="nav-item nav-link active" sec:authorize="!isAuthenticated()" th:href="@{index}" th:text="#{home.page}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{caloriescalc}" th:text="#{caloriecalculator}">Calories calc</a>
+            <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{products}" th:text="#{products}">Products</a>
+            <a class="nav-item nav-link" sec:authorize="!isAuthenticated()" th:href="@{bmr}">BMR</a>
+            <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{user}" th:text="#{user.page.title}">User Panel</a>
         </div>
     </div>
     <div class="row">
