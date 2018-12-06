@@ -7,6 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.atm.dietapp.dietapp.exception.RegistrationException;
 import pl.atm.dietapp.dietapp.repository.UserRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -32,6 +35,30 @@ public class UserService {
             userRepository.save(user);
         }
 
+    }
+
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
+    public List<UserDto> findAll() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(this::mapTo).collect(Collectors.toList());
+    }
+
+    private UserDto mapTo(User user) {
+        UserDto dto = new UserDto();
+        dto.setId(user.getId());
+        dto.setUsername(user.getUsername());
+        dto.setPassword(user.getPassword());
+        return dto;
+    }
+
+    private User mapTo(UserDto dto) {
+        User user = new User();
+        user.setId(dto.getId());
+        user.setUsername(dto.getUsername());
+        user.setPassword(dto.getPassword());
+        return user;
     }
 
 //    public void save(UserDto userDto)  {

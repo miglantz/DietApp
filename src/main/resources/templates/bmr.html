@@ -1,8 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <div th:replace="templates :: head">
-    </div>
-
+    <th:block th:replace="templates :: head"/>
     <title th:text="#{bmr.page.title}">ATM - BMR</title>
 </head>
 <body>
@@ -17,8 +15,8 @@
     <div class="container align-items-center">
         <div class="row">
             <div class="form-group col-md-2">
-                <input type="radio" name="gender" value="male" checked th:text="#{male}"> <br>
-                <input type="radio" name="gender" value="female" th:text="#{female}"> <br>
+                <input type="radio" name="gender" value="MALE" checked th:text="#{male}"> <br>
+                <input type="radio" name="gender" value="FEMALE" th:text="#{female}"> <br>
             </div>
             <div class="col-md-3"></div>
             <div class="form-group col-md-2">

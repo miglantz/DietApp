@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <div th:replace="templates :: head">
-    </div>
-
+    <th:block th:replace="templates :: head"/>
     <title th:text="#{index.page.title}">Page title</title>
 </head>
 <body>
 <div th:replace="templates :: navbar"></div>
-<div class="small text-right">
-    <a th:href="@{index(lang=pl_PL)}" th:text="#{language.polish}"></a> |
-    <a th:href="@{index(lang=en_GB)}" th:text="#{language.english}"></a> |
-    <a th:href="@{index(lang=de_DE)}" th:text="#{language.german}"></a>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <img src="https://dingo.care2.com/pictures/greenliving/1235/1234853.large.jpg"
-             class="rounded mx-auto d-block" alt="pankackes"
-             th:src="@{/images/welcome.jpg}"/>
-    </div>
-</div>
-
 <div class="container">
-    <div class="container">
-        <h3 align="center" th:text="#{caloriecalculator}">Kalkulator kalori</h3>
+    <div class="small text-right">
+        <a th:href="@{index(lang=pl_PL)}" th:text="#{language.polish}"></a> |
+        <a th:href="@{index(lang=en_GB)}" th:text="#{language.english}"></a> |
+        <a th:href="@{index(lang=de_DE)}" th:text="#{language.german}"></a>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-3"><h1>ATM</h1></div>
+        <div class="col-md-6"></div>
+
+        <div class="col-md-12">
+            <img src="https://dingo.care2.com/pictures/greenliving/1235/1234853.large.jpg"
+                 class="rounded mx-auto d-block" alt="pankackes"
+                 th:src="@{/images/welcome.jpg}"/>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <h3 align="center" th:text="#{caloriecalculator}">Kalkulator kalori</h3>
+        </div>
 
 <div class="container" th:replace="templates :: footer">
     <p> Footer </p>
