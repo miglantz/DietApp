@@ -7,8 +7,14 @@ import pl.atm.dietapp.dietapp.enums.Aim;
 import pl.atm.dietapp.dietapp.enums.Gender;
 
 @Controller
-@RequestMapping("/calculator")
+@RequestMapping("/bmr")
 public class MetabolicRateRestController {
+
+
+    @RequestMapping
+    public String caloriescalc(){
+        return "bmr";
+    }
 
     @PostMapping
     public @ResponseBody double metabolicRate(
@@ -16,7 +22,7 @@ public class MetabolicRateRestController {
              @RequestParam("weight")double weight,
              @RequestParam("height")double height,
              @RequestParam("age")int age,
-             @RequestParam("activity")String activityString,
+             @RequestParam("physical.activity")String activityString,
              @RequestParam("aim")String aimString) {
         double result = 0;
         if (gender.equals(Gender.MALE.toString().toLowerCase())) {

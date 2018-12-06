@@ -1,7 +1,7 @@
 package pl.atm.dietapp.dietapp.enums;
 
 public enum Aim {
-    LOOSE(-250, "Chcę zrzucić wagę"),
+    LOSE(-250, "Chcę zrzucić wagę"),
     GAIN(250, "Chcę przytyć"),
     KEEP(0, "Chcę utrzymać wagę");
 

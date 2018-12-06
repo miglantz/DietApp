@@ -13,7 +13,13 @@ import pl.atm.dietapp.dietapp.service.UserService;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
+
+    @RequestMapping
+    public String user(){
+        return "user";
+    }
 
 
 

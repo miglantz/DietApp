@@ -9,7 +9,7 @@ public class CaloriesCalcController {
 
     @RequestMapping
     public String caloriescalc(){
-        return "/caloriescalc";
+        return "caloriescalc";
     }
 
     

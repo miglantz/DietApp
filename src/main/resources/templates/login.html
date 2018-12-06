@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title> </title>
+<head >
+    <div th:replace="templates :: head">
+    </div>
 
+    <title th:text="#{login.page.title}">Page title</title>
 </head>
 
     <form th:action='@{/login}' method='POST'>
@@ -11,6 +13,10 @@
                 <input name="submit" type="submit" value="Zaloguj"/></td></tr>
         </table>
     </form>
+
+<div class="container" th:replace="templates :: footer">
+    <p> Footer </p>
+</div>
 
 </body>
 </html>
