@@ -1,47 +1,64 @@
 package pl.atm.dietapp.dietapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.atm.dietapp.dietapp.dto.ProductDto;
-import pl.atm.dietapp.dietapp.dto.UserDto;
-import pl.atm.dietapp.dietapp.entity.Product;
 import pl.atm.dietapp.dietapp.service.ProductService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
-@RequestMapping("/products")
+//@RequestMapping("/products")
 public class ProductController {
 
+    @Autowired
     ProductService productService;
 
-    @RequestMapping
-    public String products() {
+//    @GetMapping("/products")
+//    public String productsForm(Model model) {
+//        model.addAttribute("product", new ProductDto());
+//        return "productForm";
+//    }
+
+    @PostMapping("/products")
+    public String create(@Valid @ModelAttribute("product") ProductDto product) {
+        product.setAmount(100.0);
+        productService.create(product);
+        return "redirect:products";
+    }
+
+    @GetMapping("/products")
+    public String displayAll(Model model) {
+        List<ProductDto> allProducts = productService.findAll();
+        model.addAttribute("product", new ProductDto());
+        model.addAttribute("allProducts", allProducts);
         return "productForm";
     }
 
-    @PostMapping
-    public String create(@Valid @ModelAttribute("product") ProductDto product) {
-        productService.create(product);
-        return "productForm";
+    @DeleteMapping("/products")
+    public String deleteProduct(@Valid @ModelAttribute("product") ProductDto product) {
+        productService.delete(product.getId());
+        return "redirect:products";
     }
 //    usuwa produkty z bazy danych
 //    @GetMapping
-//    public String products(Model model, ProductDto productDto) {
+//    public String productsForm(Model model, ProductDto productDto) {
 //
-//        List<ProductDto> products = productService.findAll();
+//        List<ProductDto> productsForm = productService.findAll();
 //        if(productDto.getId()!=null) {
 //            Optional<Product> chosenProductOpt = productService.findByID(productDto.getId());
 //            Product chosenProduct = chosenProductOpt.get();
 //            model.addAttribute("chosenProduct", chosenProduct);
 //        }
-//        model.addAttribute("products", products);
+//        model.addAttribute("productsForm", productsForm);
 //        model.addAttribute("product", new ProductDto());
-//        return "products";
+//        return "productsForm";
 //    }
 
 

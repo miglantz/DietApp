@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -9,22 +9,50 @@
 </head>
 <body>
 
-<form>
-    <div class="form-group">
-        <label for="productName">Nazwa produktu</label>
-        <input type="text" class="form-control" id="productName"
-               placeholder="wpisz nazwę produktu">
+<h4>DODAWANIE NOWEGO PRODUKTU:</h4>
+<form method="post" th:action="@{/products}" th:object="${product}">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="productName" th:text = "#{products.name}"></label>
+            <input type="text" class="form-control" id="productName"
+                   th:placeholder="Enter + #{products.name}" th:field="*{name}">
+        </div>
+        <div class="form-group col-md-1">
+            <label for="kcal">Kcal:</label>
+            <input type="number" class="form-control" id="kcal" placeholder="Kcal"
+                   th:field="*{kcal}">
+        </div>
+        <div class="form-group col-md-1">
+            <label for="carbs">Carbs:</label>
+            <input type="number" class="form-control" id="carbs" placeholder="Carbs"
+                   th:field="*{carbs}">
+        </div>
+        <div class="form-group col-md-1">
+            <label for="fat">Fat:</label>
+            <input type="number" class="form-control" id="fat" placeholder="Fat"
+                   th:field="*{fat}">
+        </div>
+        <div class="form-group col-md-1">
+            <label for="proteins">Proteins:</label>
+            <input type="number" class="form-control" id="proteins" placeholder="Proteins"
+                   th:field="*{protein}">
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="Kcal">Kcal</label>
-        <input type="text" class="form-control" id="Kcal" placeholder="Kcal">
-    </div>
-
-    <!--dokończyć-->
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
 </form>
+
+<br>
+<h4>USUWANIE PRODUKTU:</h4>
+<form th:action="@{/products}" th:object="${product}" th:method="delete">
+    <select th:field="*{id}">
+        <option th:each="product: ${allProducts}"
+                th:value="${product.id}"
+                th:utext="${product.name}">
+        </option>
+    </select>
+    <button type="submit" class="btn btn-primary">Usuń</button>
+</form>
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

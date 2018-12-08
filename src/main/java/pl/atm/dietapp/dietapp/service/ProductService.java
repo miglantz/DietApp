@@ -60,16 +60,4 @@ public class ProductService {
         return product;
     }
 
-    /*
-
-
-    private Task mapTo(TaskDto dto) {
-        Task task = new Task();
-        task.setId(dto.getId());
-        task.setDescription(dto.getDescription());
-        return task;
-    }
-     */
-
-
 }

@@ -65,7 +65,7 @@ registeredUser = service.registerUser(userDto);
 //                model.addAttribute("error", "Error: " + e.getMessage());
 //                return "register";
 //            }
-//            return "redirect:products";
+//            return "redirect:productsForm";
 //        }
 
 

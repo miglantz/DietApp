@@ -12,4 +12,17 @@ public class ProductDto {
     private Double carbs;
     private Double fat;
     private Double protein;
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", kcal=" + kcal +
+                ", carbs=" + carbs +
+                ", fat=" + fat +
+                ", protein=" + protein +
+                '}';
+    }
 }
