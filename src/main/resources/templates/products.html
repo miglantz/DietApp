@@ -15,6 +15,34 @@
 
 <h1 th:text="#{products}"> Product </h1>
 
+<a th:href="@{/productform.html}">
+    <button type="button" class="btn btn-primary">Dodaj nowy produkt</button>
+</a>
+
+<table>
+    <tr>
+        <th>Produkt</th>
+        <th>Ilość (g)</th>
+        <th>Białka</th>
+        <th>Tłuszcze</th>
+        <th>Węglowodany</th>
+        <th>Kalorie</th>
+    </tr>
+<th:block th:each="product : ${products}">
+    <tr>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.getAmount()}"></td>
+        <td th:text="${product.getProtein()}"></td>
+        <td th:text="${product.getFat()}"></td>
+        <td th:text="${product.getCarbs()}"></td>
+        <td th:text="${product.getKcal()}"></td>
+    </tr>
+
+</th:block>
+</table>
+
+
+
 
 <div class="container" th:replace="templates :: footer">
     <p> Footer </p>

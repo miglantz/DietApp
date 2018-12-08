@@ -2,16 +2,12 @@ package pl.atm.dietapp.dietapp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.atm.dietapp.dietapp.dto.ProductDto;
-import pl.atm.dietapp.dietapp.dto.UserDto;
-import pl.atm.dietapp.dietapp.entity.Product;
 import pl.atm.dietapp.dietapp.service.ProductService;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/products")
@@ -19,16 +15,25 @@ public class ProductController {
 
     ProductService productService;
 
-    @RequestMapping
-    public String products() {
-        return "productForm";
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @PostMapping
-    public String create(@Valid @ModelAttribute("product") ProductDto product) {
-        productService.create(product);
-        return "productForm";
+
+    @RequestMapping
+    public String list(Model model){
+        List<ProductDto> products = productService.findAll();
+        model.addAttribute("products", products);
+      //  model.addAttribute("product", new ProductDto());
+
+        return "products";
     }
+
+//    @PostMapping(value = "productForm")
+//    public String create(@Valid @ModelAttribute("product") ProductDto product) {
+//        productService.create(product);
+//        return "productform";
+//    }
 //    usuwa produkty z bazy danych
 //    @GetMapping
 //    public String products(Model model, ProductDto productDto) {
