@@ -27,29 +27,24 @@
             <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{user}" th:text="#{user.page.title}">User Panel</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6"></div>
-        <div class="container">
-            <div class="col-md-3">
 
-                <a th:href="@{/login}" sec:authorize="!isAuthenticated()">
-                    <button type="button" class="btn btn-primary" th:text="#{login}">ZALOGUJ</button>
-                </a>
-                <a th:href="@{/register}" sec:authorize="!isAuthenticated()">
-                    <button type="button" class="btn btn-primary" th:text="#{signin}">ZAREJESTRUJ</button>
-                </a>
-                <div sec:authorize="isAuthenticated()" sec:authentication="name">
-                </div>
+    <div class="row col-md-3 container">
+        <div class="col-md-3"></div>
+            <div class="container">
+
+                <a class="btn btn-outline-success" role="button"
+                   th:href="@{/login}" th:text="#{login}" sec:authorize="!isAuthenticated()"></a>
+                <a class="btn btn-outline-success" role="button"
+                   th:href="@{/register}" th:text="#{signin}" sec:authorize="!isAuthenticated()"></a>
+
+                <div sec:authorize="isAuthenticated()" sec:authentication="name"></div>
+
                 <form th:action="@{/logout}" sec:authorize="isAuthenticated()" method="post">
                     <input type="submit" class="btn btn-primary" name="submit" value="Wyloguj">
                 </form>
-
-
-            </div>
-
         </div>
     </div>
+
 </nav>
 </div>
 
