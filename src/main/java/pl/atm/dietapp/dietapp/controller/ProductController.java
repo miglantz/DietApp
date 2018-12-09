@@ -30,6 +30,7 @@ public class ProductController {
     public String create(@Valid @ModelAttribute("product") ProductDto product) {
         product.setAmount(100.0);
         productService.create(product);
+
         return "redirect:products";
     }
 
