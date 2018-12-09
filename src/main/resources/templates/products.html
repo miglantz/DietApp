@@ -16,6 +16,46 @@
 <h1 th:text="#{products}"> Product </h1>
 
 
+<form th:action="@{/products}" th:object="${product}" method="post">
+    <div class="form-group">
+        <label for="productName">Nazwa produktu</label>
+        <input type="text" class="form-control" id="productName"
+               placeholder="wpisz nazwę produktu" th:field="*{name}">
+    </div>
+
+    <div class="form-group">
+        <label for="Kcal">Kcal</label>
+        <input type="text" class="form-control" id="Kcal" placeholder="Kcal" th:field="*{kcal}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table>
+    <tr>
+        <th>Produkt</th>
+        <th>Ilość (g)</th>
+        <th>Białka</th>
+        <th>Tłuszcze</th>
+        <th>Węglowodany</th>
+        <th>Kalorie</th>
+    </tr>
+<th:block th:each="product : ${products}">
+    <tr>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.getAmount()}"></td>
+        <td th:text="${product.getProtein()}"></td>
+        <td th:text="${product.getFat()}"></td>
+        <td th:text="${product.getCarbs()}"></td>
+        <td th:text="${product.getKcal()}"></td>
+    </tr>
+
+</th:block>
+</table>
+
+
+
+
 <div class="container" th:replace="templates :: footer">
     <p> Footer </p>
 </div>
