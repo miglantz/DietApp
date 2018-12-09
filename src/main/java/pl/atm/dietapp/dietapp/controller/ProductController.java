@@ -24,16 +24,16 @@ public class ProductController {
     public String list(Model model){
         List<ProductDto> products = productService.findAll();
         model.addAttribute("products", products);
-      //  model.addAttribute("product", new ProductDto());
+        model.addAttribute("product", new ProductDto());
 
         return "products";
     }
 
-//    @PostMapping(value = "productForm")
-//    public String create(@Valid @ModelAttribute("product") ProductDto product) {
-//        productService.create(product);
-//        return "productform";
-//    }
+    @PostMapping(value = "products")
+    public String create(@Valid @ModelAttribute("product") ProductDto product) {
+        productService.create(product);
+        return "products";
+    }
 //    usuwa produkty z bazy danych
 //    @GetMapping
 //    public String products(Model model, ProductDto productDto) {

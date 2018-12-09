@@ -15,9 +15,21 @@
 
 <h1 th:text="#{products}"> Product </h1>
 
-<a th:href="@{/productform.html}">
-    <button type="button" class="btn btn-primary">Dodaj nowy produkt</button>
-</a>
+
+<form th:action="@{/products}" th:object="${product}" method="post">
+    <div class="form-group">
+        <label for="productName">Nazwa produktu</label>
+        <input type="text" class="form-control" id="productName"
+               placeholder="wpisz nazwę produktu" th:field="*{name}">
+    </div>
+
+    <div class="form-group">
+        <label for="Kcal">Kcal</label>
+        <input type="text" class="form-control" id="Kcal" placeholder="Kcal" th:field="*{kcal}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 <table>
     <tr>
