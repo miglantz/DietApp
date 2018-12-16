@@ -19,20 +19,19 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @PostMapping("/products")
-    public String create(@Valid @ModelAttribute("product") ProductDto product) {
-        product.setAmount(100.0);
-        productService.create(product);
-
-        return "redirect:products";
-    }
-
     @GetMapping("/products")
     public String displayAll(Model model) {
         List<ProductDto> allProducts = productService.findAll();
         model.addAttribute("product", new ProductDto());
         model.addAttribute("allProducts", allProducts);
         return "productForm";
+    }
+
+    @PostMapping("/products")
+    public String create(@Valid @ModelAttribute("product") ProductDto product) {
+        product.setAmount(100.0);
+        productService.create(product);
+        return "redirect:products";
     }
 
     @DeleteMapping("/products")

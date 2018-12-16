@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/login", "/register", "/bmr").permitAll()
                     .antMatchers("/", "/index").permitAll()
+                    .antMatchers("/images/welcome.jpg").permitAll()
                 //.antMatchers("/users").hasRole("ADMIN") //TODO dodać funkcjonalność zarządzania userami przez administratora
                     .anyRequest().authenticated()
                 .and()
